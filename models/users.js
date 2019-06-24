@@ -7,7 +7,34 @@ module.exports = (sequelize, DataTypes) => {
     phone_number: DataTypes.STRING
   }, {});
   users.associate = function(models) {
-    // associations can be defined here
+    users.hasMany(models.stories,{
+      foreignKey : "user_id"
+    })
+  };
+  users.associate = function(models) {
+    users.hasMany(models.feeds,{
+      foreignKey : "user_id"
+    })
+  };
+  users.associate = function(models) {
+    users.hasMany(models.feed_responses,{
+      foreignKey : "user_id"
+    })
+  };
+  users.associate = function(models) {
+    users.hasMany(models.feed_comments,{
+      foreignKey : "user_id"
+    })
+  };
+  users.associate = function(models) {
+    users.hasMany(models.comment_responses,{
+      foreignKey : "user_id"
+    })
+  };
+  users.associate = function(models) {
+    users.hasMany(models.comment_replies,{
+      foreignKey : "user_id"
+    })
   };
   return users;
 };

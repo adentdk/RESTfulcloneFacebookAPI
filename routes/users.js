@@ -13,20 +13,20 @@ router.get('/',async (req, res, next) => {
   try {
     const users = await model.users.findAll({});
     if(users.length !== 0) {
-      res.status(200).json({
+      res.status(200).send({
         "status" : "OK",
         "messages" : "user data has been loaded",
         "data" : users
       })
     }else{
-      res.status(400).json({
+      res.status(400).send({
           "status" : "ERROR",
           "messages" : "EMPTY",
           "data" : {}
       })
     }
   } catch(err) {
-    res.status(400).json({
+    res.status(400).send({
       "status" : "ERROR",
       "messages" : err.messages,
       "data" : {}
@@ -37,26 +37,26 @@ router.get('/',async (req, res, next) => {
 // GET user by id
 router.get('/:id', async (req,res,next) => {
   try {
-    const users = await model.users.findAll({
+    const users = await model.users.findOne({
       where: {
         id: req.params.id
       }
     });
-    if(users.length !== 0) {
-      res.status(200).json({
+    if(users) {
+      res.status(200).send({
         "status" : "OK",
         "messages" : "user data has been loaded",
-        "data" : users[0]
+        "data" : users
       })
     }else{
-      res.status(400).json({
+      res.status(400).send({
           "status" : "ERROR",
           "messages" : "EMPTY",
           "data" : {}
       })
     }
   } catch(err) {
-    res.status(400).json({
+    res.status(400).send({
       "status" : "ERROR",
       "messages" : err.messages,
       "data" : {}
@@ -81,14 +81,14 @@ router.post('/',async (req,res,next) => {
     });
 
     if(create) {
-      res.status(201).json({
+      res.status(201).send({
         "status" : "OK",
         "messages" : "user data successfully added",
         "data" : create
       })
     }
   } catch(err) {
-    res.status(400).json({
+    res.status(400).send({
       "status" : "ERROR",
       "messages" : err.messages,
       "data" : {}
@@ -118,14 +118,14 @@ router.put('/:id', async (req,res,next) => {
     });
 
     if(update) {
-      res.status(200).json({
+      res.status(200).send({
         "status" : "OK",
         "messages" : "user data updated successfully",
         "data" : update
       })
     }
   }catch(err){
-    res.status(400).json({
+    res.status(400).send({
       "status" : "ERROR",
       "messagges" : err.messages,
       "data" : {}
@@ -143,14 +143,14 @@ router.delete('/:id', async(req,res,next) => {
       }
     })
     if(destroy) {
-      res.status(200).json({
+      res.status(200).send({
         "status" : "OK",
         "messages" : "user data was successfully deleted",
         "data" : destroy
       })
     } 
   } catch (err) {
-    res.status(400).json({
+    res.status(400).send({
       "status" : "ERROR",
       "messages" : err.messages,
       "data" : {}

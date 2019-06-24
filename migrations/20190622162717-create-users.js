@@ -6,19 +6,21 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER(11)
+        type: Sequelize.INTEGER
       },
       name: {
         type: Sequelize.STRING(255)
       },
       email: {
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING(255),
+        unique : true
       },
       password: {
         type: Sequelize.STRING(255)
       },
       phone_number: {
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING(255),
+        unique: true
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +30,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    },{
+      underscored: true
     });
   },
   down: (queryInterface, Sequelize) => {

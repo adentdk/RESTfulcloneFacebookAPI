@@ -4,34 +4,25 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    phone_number: DataTypes.STRING
+    phone_number: DataTypes.STRING,
+    avatar: DataTypes.STRING
   }, {});
   users.associate = function(models) {
     users.hasMany(models.stories,{
       foreignKey : "user_id"
     })
-  };
-  users.associate = function(models) {
     users.hasMany(models.feeds,{
       foreignKey : "user_id"
     })
-  };
-  users.associate = function(models) {
     users.hasMany(models.feed_responses,{
       foreignKey : "user_id"
     })
-  };
-  users.associate = function(models) {
     users.hasMany(models.feed_comments,{
       foreignKey : "user_id"
     })
-  };
-  users.associate = function(models) {
     users.hasMany(models.comment_responses,{
       foreignKey : "user_id"
     })
-  };
-  users.associate = function(models) {
     users.hasMany(models.comment_replies,{
       foreignKey : "user_id"
     })

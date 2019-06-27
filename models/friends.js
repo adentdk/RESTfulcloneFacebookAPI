@@ -9,8 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     friends.belongsTo(models.users,{
       foreignKey : "person",
     })
-  };
-  friends.associate = function(models) {
     friends.belongsTo(models.users,{
       foreignKey : "other_person",
     })

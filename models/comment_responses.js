@@ -9,15 +9,11 @@ module.exports = (sequelize, DataTypes) => {
     comment_responses.belongsTo(models.responses,{
       foreignKey : "response_id"
     })
-  };
-  comment_responses.associate = function(models) {
     comment_responses.belongsTo(models.feed_comments,{
       foreignKey : "comment_id"
     })
-  };
-  comment_responses.associate = function(models) {
     comment_responses.belongsTo(models.users,{
-      foreignKey : "users_id"
+      foreignKey : "user_id"
     })
   };
   return comment_responses;

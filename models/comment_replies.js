@@ -9,8 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     comment_replies.belongsTo(models.feed_comments,{
       foreignKey : "comment_id"
     })
-  };
-  comment_replies.associate = function(models) {
     comment_replies.belongsTo(models.users,{
       foreignKey : "user_id"
     })

@@ -6,7 +6,10 @@ const logger = require('morgan');
 
 const indexRoute= require('./routes/index');
 const usersRoute = require('./routes/users');
+const feedsRoute = require('./routes/feeds');
+const storiesRoute = require('./routes/stories');
 const authRoute = require('./routes/auth');
+const middleware = require('./middleware/middleware');
 
 const app = express();
 
@@ -20,10 +23,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/auth',authRoute);
+
+app.use(middleware.auth);
 app.use('/', indexRoute);
-app.use('/api/users', usersRoute);
+app.use('/api/users',usersRoute);
+app.use('/api/feeds',feedsRoute);
+app.use('/api/stories',storiesRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -9,18 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     feed_comments.hasMany(models.comment_replies, {
       foreignKey : "comment_id"
     })
-  };
-  feed_comments.associate = function(models) {
     feed_comments.hasMany(models.comment_responses, {
       foreignKey : "comment_id"
     })
-  };
-  feed_comments.associate = function(models) {
     feed_comments.belongsTo(models.feeds, {
       foreignKey : "feed_id"
     })
-  };
-  feed_comments.associate = function(models) {
     feed_comments.belongsTo(models.users, {
       foreignKey : "user_id"
     })

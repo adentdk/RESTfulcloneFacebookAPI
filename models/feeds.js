@@ -10,15 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     feeds.belongsTo(models.users,{
       foreignKey : "user_id"
     })
-  };
-  feeds.associate = function(models) {
     feeds.hasMany(models.feed_responses,{
       foreignKey : "response_id"
     })
-  };
-  feeds.associate = function(models) {
     feeds.hasMany(models.feed_comments,{
-      foreignKey : "comment_id"
+      foreignKey : "feed_id"
     })
   };
   return feeds;

@@ -13,7 +13,7 @@ router.get('/',async (req, res, next) => {
   try {
     const users = await model.users.findAll({});
     if(users.length !== 0) {
-      res.status(200).send({
+      res.send({
         "status" : "OK",
         "messages" : "user data has been loaded",
         "data" : users
@@ -28,7 +28,6 @@ router.get('/',async (req, res, next) => {
   } catch(err) {
     res.status(400).send({
       "status" : "ERROR",
-      "messages" : err.messages,
       "data" : {}
     })
   }
@@ -90,7 +89,7 @@ router.post('/',async (req,res,next) => {
   } catch(err) {
     res.status(400).send({
       "status" : "ERROR",
-      "messages" : err.messages,
+      "messages" : "nothing",
       "data" : {}
     })
   }

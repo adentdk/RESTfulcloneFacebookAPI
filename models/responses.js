@@ -7,8 +7,6 @@ module.exports = (sequelize, DataTypes) => {
     responses.hasMany(models.feed_responses,{
       foreignKey : "response_id"
     })
-  };
-  responses.associate = function(models) {
     responses.hasMany(models.comment_responses,{
       foreignKey : "response_id"
     })

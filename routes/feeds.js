@@ -53,13 +53,13 @@ router.get('/details/:id', (req,res) => {
 
 
 	model.feeds.findOne({
+		where : {
+				id : req.params.id
+			},
 		include : [
 			{ 
 				model : model.users,
-				attributes : ['name','avatar'],
-				where : {
-					id : req.params.id
-				}
+				attributes : ['name','avatar']
 			},
 			{ 
 				model : model.feed_comments,
